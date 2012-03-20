@@ -109,7 +109,7 @@ var nodeQuote = {
 		});
 	},
 
-	getPageByUrl : function(domain, callback){
+	getPageByDomain : function(domain, callback){
 		request(this.BASE + "page/get/?domain=" + domain, function(e, r, b){
 			var json;
 			if (!e) {
