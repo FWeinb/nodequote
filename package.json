@@ -1,0 +1,17 @@
+{ "name" : "nodequote"
+, "description" : "Node.JS Wrapper for the quote.fm API"
+, "tags" : ["quotefm", "simple", "http", "api", "wrapper"]
+, "version" : "0.1"
+, "author" : "Fabrice Weinberg<Fabrice@weinberg.me>"
+, "repository" :
+  { "type" : "git"
+  , "url" : "http://github.com/fweinb/nodequote.git"
+  }
+, "bugs" :
+  { "url" : "http://github.com/fweinb/request/issues" }
+, "dependencies": {
+    "request": ">= 2.8",
+  }
+, "engines" : ["node >= 0.3.6"]
+, "main" : "./nodequote"
+}
