@@ -7,9 +7,9 @@ A basic [quote.fm API](http://quote.fm/labs "quote.fm API") wrapper with a simpl
 ```
 var nodeQuote = require("./nodequote.js");
 
-nodeQuote.getUser("fweinb", function(j, e){
-	if (!e){
-		console.log(j);
+nodeQuote.getUser("fweinb", function(json, error){
+	if (!error){
+		console.log(json);
 	}
 });
 ```
