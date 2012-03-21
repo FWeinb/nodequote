@@ -13,4 +13,4 @@ nodeQuote.getUser("fweinb", function(j, e){
 	}
 });
 ```
-
+For more information see the [Function Reference](https://github.com/FWeinb/nodequote/wiki/Function-Reference) or the [test.js](https://github.com/FWeinb/nodequote/blob/master/test.js).
