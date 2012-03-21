@@ -5,10 +5,10 @@
 , "author" : "Fabrice Weinberg<Fabrice@weinberg.me>"
 , "repository" :
   { "type" : "git"
-  , "url" : "http://github.com/fweinb/nodequote.git"
+  , "url" : "http://github.com/FWeinb/nodequote.git"
   }
 , "bugs" :
-  { "url" : "http://github.com/fweinb/request/issues" }
+  { "url" : "https://github.com/FWeinb/nodequote/issues" }
 , "dependencies": {
     "request": ">= 2.8",
   }
