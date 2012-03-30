@@ -3,6 +3,11 @@ nodequote
 
 A basic [quote.fm API](http://quote.fm/labs "quote.fm API") wrapper with a simple interface. 
 
+## Install ##
+```
+npm install nodequote
+```
+
 ## Usage ##
 ```
 var nodeQuote = require("./nodequote.js");
