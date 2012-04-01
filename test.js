@@ -7,18 +7,16 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getRecommendationListByArticle(123, 0, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getRecommendationListByArticle({ id : 123, page : 1, pageSize : 1, scope : 'time'}, function(j, e){ // You can omit the 0 for page
 		if (!e){
 			console.log("getRecommendationListByArticle:\t" + j.article.url);
 		}
 	});
-
-	nodeQuote.getRecommendationListByUser("uarrr", 0, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getRecommendationListByUser({ username : "FWeinb", page : 1, pageSize : 1, scope : 'time'}, function(j, e){ // You can omit the 0 for page
 		if (!e){
 			console.log("getRecommendationListByUser:\t" + j.user.fullname);
 		}
 	});
-
 
 /* Article */
 	nodeQuote.getArticle(2111, function(j, e){
@@ -33,13 +31,13 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getArticleListByPage(23, 0, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getArticleListByPage({id : 23, scope : 'time', pageSize : 10, page : 1},  function(j, e){ // You can omit the 0 for page
 		if (!e){
 			console.log("getArticleListByPage:\t" + j.page.name);
 		}
 	});
 
-	nodeQuote.getArticleListByCategories({ids : [1,2,3], language : "de", page : [5,6]}, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getArticleListByCategories({ids :  [1,2,3], scope : 'time', pageSize : 10, page : [5,6], language : "de"}, function(j, e){ // You can omit the 0 for page
 		if (!e){
 			console.log("getArticleListByCategories:\t" + j.totalCount);
 		}
@@ -65,6 +63,7 @@ var nodeQuote = require("./nodequote.js");
 	});
 
 /* User */
+
 	nodeQuote.getUser(1229,  function(j, e){ 
 		if (!e){
 			console.log("getUser(id):\t" + j.username);
@@ -77,13 +76,14 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getUserListFollowers("FWeinb", 0,  function(j, e){ // You can omit the 0 for page
+
+	nodeQuote.getUserListFollowers({username :"FWeinb", pageSize : 10, page : 0},  function(j, e){ 
 		if (!e){
 			console.log("getUserListFollowers:\t" + j.totalCount);
 		}
 	});
 
-	nodeQuote.getUserListFollowings("FWeinb", function(j, e){ // You can omit the 0 for page
+	nodeQuote.getUserListFollowings({username :"FWeinb", pageSize : 10, page : 0}, function(j, e){ 
 		if (!e){
 			console.log("getUserListFollowings:\t" + j.totalCount);
 		}

@@ -13,7 +13,7 @@ var nodeQuote = (function(){
 	/* Helper Functions */
 		function addPage(page, start){
 			if (page){
-				var q = ((start === null)?"&":start)+"page="
+				var q = ((start === undefined)?"&":start)+"page="
 				if (Array.isArray(page)){
 					return q+page.join(",");			
 				}else if (isNumeric(page) && page != 0){
@@ -21,21 +21,38 @@ var nodeQuote = (function(){
 					return q;
 				}
 			}
-			return "";
+			return '';
 		}
 
 		function serializeObject(object){
-			var query = "";
-			for(var name in object){
-				query += name + "=" + covertArrayToString(object[name]);
+			var query = '?';
+			if (typeof(object) === 'object'){
+				for(var name in object){
+					var obj = object[name]
+					, 	part = name + "=";
+					switch(typeof(obj)){
+						case 'number' :
+								part = (obj !== 0)?part+obj:'';
+							break;
+						case 'string' :
+								part = (obj !== '')?part+obj:'';
+							break;
+						case 'object' :
+								part = (getString(obj) !== '')?part+obj:'';
+							break;
+						default :
+							break;
+					}
+					query += (part !== '')?part+ "&":'';
+				}
 			}
-			return query;
+			return query.substr(0,query.length-1);
 		}
-		function covertArrayToString(ids){
-			if (Array.isArray(ids)){
-				return ids.join(",");
+		function getString(obj){
+			if (Array.isArray(obj)){
+				return obj.join(",");
 			}
-			return ids;
+			return obj;
 		}
 
 		function isNumeric(id){
@@ -43,17 +60,26 @@ var nodeQuote = (function(){
 		}
 
 
-
 	/* Private Functions */
-		function getRecommendationList(para, page, type, callback){
-			var query = ((isNumeric(para))?"?id=":"?username=") + para;
-			request(BASE + "recommendation/"+type+"/"+ query + addPage(page), function(e, r, b){
+
+		/* Recommendation */
+		function getRecommendationList(object, type, callback){
+			request(BASE + "recommendation/"+type+"/"+ serializeObject(object), function(e, r, b){
 				processCallback(e, r, b, callback);
 			});			
 		}
 
-		function getUserList(username, page, type, callback){
-			request(BASE + "user/"+type+"/?username=" + username + addPage(page), function(e, r, b){
+		/* Articel */
+		function getArticelList(object, type, callback){
+			request(BASE + "article/"+type+"/" + serializeObject(object), function(e, r, b){
+				processCallback(e, r, b, callback);
+			});
+		}
+
+
+		/* User */
+		function getUserList(object, type, callback){
+			request(BASE + "user/"+type+"/" + serializeObject(object), function(e, r, b){
 				processCallback(e, r, b, callback);
 			});	
 		}
@@ -68,22 +94,23 @@ var nodeQuote = (function(){
 
 	return {
 
-		API_VERSION : '1.0.3',
+		API_VERSION : '1.0.5',
 
 		/* Recommandation */
 
-		getRecommendation : function (id, callback){
-			getRecommendationList(id, 0, "get", callback);
+		getRecommendation : function (para, callback){
+			var query = ((isNumeric(para))?"?id=":"?username=") + para;
+			request(BASE + "recommendation/get/"+ query, function(e, r, b){
+				processCallback(e, r, b, callback);
+			});		
 		},
 
-		getRecommendationListByArticle : function (id, page, callback){
-			callback = (arguments.length === 2)?page:callback;
-			getRecommendationList(id, page, "listByArticle", callback);
+		getRecommendationListByArticle : function (object, callback){
+			getRecommendationList(object, "listByArticle", callback);
 		},
 
-		getRecommendationListByUser : function (name, page, callback){
-			callback = (arguments.length === 2)?page:callback;
-			getRecommendationList(name, page, "listByUser", callback);
+		getRecommendationListByUser : function (object, callback){
+			getRecommendationList(object, "listByUser", callback);
 		},
 
 		/* Article */
@@ -108,17 +135,12 @@ var nodeQuote = (function(){
 			});
 		},
 
-		getArticleListByPage : function(id, page, callback){			
-			callback = (arguments.length === 2)?page:callback;
-			request(BASE + "article/listByPage/?id=" + id + addPage(page), function(e, r, b){
-				processCallback(e, r, b, callback);
-			});
+		getArticleListByPage : function(object, callback){		
+			getArticelList(object, 'listByPage', callback);
 		},
 
 		getArticleListByCategories : function(object, callback){
-			request(BASE + "article/listByCategories/?" + serializeObject(object) , function(e, r, b){
-				processCallback(e, r, b, callback);
-			});
+			getArticelList(object, 'listByCategories', callback);
 		},
 
 		/* Page */
@@ -144,7 +166,7 @@ var nodeQuote = (function(){
 		},
 
 		getPageList : function(page, callback){		
-			callback = (arguments.length === 1)?page:callback;
+			callback = arguments[arguments.length-1];
 			request(BASE + "page/list/" + addPage(page, "?"), function(e, r, b){
 				processCallback(e, r, b, callback);
 			});
@@ -172,14 +194,12 @@ var nodeQuote = (function(){
 			});
 		},
 
-		getUserListFollowers : function(username, page, callback){
-			callback = (arguments.length === 2)?page:callback;
-			getUserList(username, page, "listFollowers", callback);
+		getUserListFollowers : function(object, callback){
+			getUserList(object, "listFollowers", callback);
 		},
 
-		getUserListFollowings : function(username, page, callback){
-			callback = (arguments.length === 2)?page:callback;
-			getUserList(username, page, "listFollowings", callback);
+		getUserListFollowings : function(object, callback){
+			getUserList(object, "listFollowings", callback);
 		},
 
 
