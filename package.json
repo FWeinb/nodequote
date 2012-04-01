@@ -1,7 +1,7 @@
 { "name" : "nodequote"
 , "description" : "Node.JS Wrapper for the quote.fm API"
 , "tags" : ["quotefm", "simple", "http", "api", "wrapper"]
-, "version" : "0.1.0"
+, "version" : "1.0.5"
 , "author" : "Fabrice Weinberg<Fabrice@weinberg.me>"
 , "repository" :
   { "type" : "git"
