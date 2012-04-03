@@ -1,7 +1,7 @@
 nodequote
 =========
 
-A basic [quote.fm API](http://quote.fm/labs "quote.fm API") wrapper with a simple interface. 
+A basic [quote.fm API](http://quote.fm/labs "quote.fm API") wrapper with a simple interface. Compatibile with API Version 1.0.6.
 
 ## Install ##
 ```

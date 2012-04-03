@@ -13,7 +13,7 @@ var nodeQuote = (function(){
 	/* Helper Functions */
 		function addPage(page, start){
 			if (page){
-				var q = ((start === undefined)?"&":start)+"page="
+				var q = ((start === undefined)?"&":start)+"page=";
 				if (Array.isArray(page)){
 					return q+page.join(",");			
 				}else if (isNumeric(page) && page != 0){
@@ -94,10 +94,9 @@ var nodeQuote = (function(){
 
 	return {
 
-		API_VERSION : '1.0.5',
+		API_VERSION : '1.0.6',
 
 		/* Recommandation */
-
 		getRecommendation : function (para, callback){
 			var query = ((isNumeric(para))?"?id=":"?username=") + para;
 			request(BASE + "recommendation/get/"+ query, function(e, r, b){

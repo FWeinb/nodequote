@@ -63,7 +63,6 @@ var nodeQuote = require("./nodequote.js");
 	});
 
 /* User */
-
 	nodeQuote.getUser(1229,  function(j, e){ 
 		if (!e){
 			console.log("getUser(id):\t" + j.username);
@@ -83,7 +82,7 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getUserListFollowings({username :"FWeinb", pageSize : 10, page : 0}, function(j, e){ 
+	nodeQuote.getUserListFollowings({id : 1229, pageSize : 10, page : 0}, function(j, e){ 
 		if (!e){
 			console.log("getUserListFollowings:\t" + j.totalCount);
 		}
