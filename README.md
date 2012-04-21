@@ -20,5 +20,6 @@ nodeQuote.getUser("fweinb", function(json, error){
 ```
 For more information see the [Function Reference](https://github.com/FWeinb/nodequote/wiki/Function-Reference) or the [test.js](https://github.com/FWeinb/nodequote/blob/master/test.js).
 
-## In Action ## 
+## In Action ##
+
 I used this module in comination with my [jQuery Highlight Plugin](https://github.com/FWeinb/jqueryhighlight/) to highlight quotes. You can find a working demo [here](quotefm.cloudno.de).
