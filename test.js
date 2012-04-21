@@ -7,12 +7,12 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getRecommendationListByArticle({ id : 123, page : 1, pageSize : 1, scope : 'time'}, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getRecommendationListByArticle({ id : 123, page : 1, pageSize : 1, scope : 'time'}, function(j, e){ 
 		if (!e){
 			console.log("getRecommendationListByArticle:\t" + j.article.url);
 		}
 	});
-	nodeQuote.getRecommendationListByUser({ username : "FWeinb", page : 1, pageSize : 1, scope : 'time'}, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getRecommendationListByUser({ username : "FWeinb", page : 1, pageSize : 1, scope : 'time'}, function(j, e){ 
 		if (!e){
 			console.log("getRecommendationListByUser:\t" + j.user.fullname);
 		}
@@ -31,13 +31,13 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getArticleListByPage({id : 23, scope : 'time', pageSize : 10, page : 1},  function(j, e){ // You can omit the 0 for page
+	nodeQuote.getArticleListByPage({id : 23, scope : 'time', pageSize : 10, page : 1},  function(j, e){ 
 		if (!e){
 			console.log("getArticleListByPage:\t" + j.page.name);
 		}
 	});
 
-	nodeQuote.getArticleListByCategories({ids :  [1,2,3], scope : 'time', pageSize : 10, page : [5,6], language : "de"}, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getArticleListByCategories({ids :  [1,2,3], scope : 'time', pageSize : 10, page : [5,6], language : "de"}, function(j, e){ 
 		if (!e){
 			console.log("getArticleListByCategories:\t" + j.totalCount);
 		}
@@ -56,7 +56,7 @@ var nodeQuote = require("./nodequote.js");
 		}
 	});
 
-	nodeQuote.getPageList(0, function(j, e){ // You can omit the 0 for page
+	nodeQuote.getPageList(0, function(j, e){ 
 		if (!e){
 			console.log("getPageList:\t" + j.totalCount);
 		}
