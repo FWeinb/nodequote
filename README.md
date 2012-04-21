@@ -22,4 +22,4 @@ For more information see the [Function Reference](https://github.com/FWeinb/node
 
 ## In Action ##
 
-I used this module in comination with my [jQuery Highlight Plugin](https://github.com/FWeinb/jqueryhighlight/) to highlight quotes. You can find a working demo [here](quotefm.cloudno.de).
+I used this module in comination with my [jQuery Highlight Plugin](https://github.com/FWeinb/jqueryhighlight/) to highlight quotes. You can find a working demo [here](http://quotefm.cloudno.de).
